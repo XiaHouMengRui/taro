@@ -1,0 +1,28 @@
+/*
+ * @Author: your name
+ * @Date: 2021-07-25 20:54:09
+ * @LastEditTime: 2021-07-26 00:13:28
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \myApp\src\pages\feedback\index.scss
+ */
+.container {
+    padding: 0 24px;
+    .item-cont {
+        display: flex;
+        align-items: center;
+        height: 100px;
+        .img-cont {
+            width: 40px;
+            height: 40px;
+            margin-right: 16px;
+        }
+        .name-cont {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+    }
+}
