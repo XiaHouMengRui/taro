@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-25 10:27:51
- * @LastEditTime: 2021-07-26 01:36:44
+ * @LastEditTime: 2021-08-01 16:35:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \myApp\src\pages\index\index.tsx
@@ -43,11 +43,16 @@ export default class Index extends Component {
           <Swiper>
             {swiperList.map(item => {
               return (
+                // 轮播图
                 <SwiperItem>
-                  <Navigator>
+                  <Navigator url="www.baidu.com" open-type="navigate">
                     <Image className="img-cont" mode="widthFix" src={item.image} />
                   </Navigator>
                 </SwiperItem>
+                // 活动banner
+
+                // 商品list
+                
               )
             })}
           </Swiper>
