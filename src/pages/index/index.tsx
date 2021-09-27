@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-25 10:27:51
- * @LastEditTime: 2021-08-12 00:07:49
+ * @LastEditTime: 2021-09-13 23:32:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \myApp\src\pages\index\index.tsx
@@ -14,10 +14,24 @@ import { AtGrid } from 'taro-ui'
 import 'taro-ui/dist/style/index.scss'
 import { getList } from '../../api/request/http'
 
-export default class Index extends Component {
-  state = {
-    swiperList: [],
-    listBanner: 
+
+interface PropsType {
+}
+interface swiperObj {
+  image: string,
+  name: string,
+  id: number
+}
+interface StateType {
+  swiperList: swiperObj[],
+  listBanner: Array<Object>
+}
+export default class Index extends Component<PropsType, StateType> {
+  constructor(props:PropsType) {
+      super(props);
+      this.state = {
+        swiperList: [],
+        listBanner: 
       [
         {
           image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
@@ -44,17 +58,22 @@ export default class Index extends Component {
           value: '手机馆'
         }
       ]
-    
+    }
   }
   componentWillMount () { }
 
-  componentDidMount () { 
-    getList({}).then(res=>{
-      this.setState({
-        swiperList: res.data.array
-      })
-      console.log(this.state.swiperList)
+  async componentDidMount () { 
+    // await getList({}).then((res:any)=>{
+    //   this.setState({
+    //     swiperList: res.data.array
+    //   })
+    // })
+    const res:any = await getList();
+    const {data} = res;
+    this.setState({
+      swiperList: data.array
     })
+    console.log(this.state.swiperList)
   }
 
   componentWillUnmount () { }
@@ -72,7 +91,7 @@ export default class Index extends Component {
         </View>
         <View className="swiper-cont">
           <Swiper indicatorDots autoplay circular>
-            {swiperList.map(item => {
+            {swiperList.map((item) => {
               return (
                 // 轮播图
                 <SwiperItem>
